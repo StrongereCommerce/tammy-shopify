@@ -1,0 +1,18 @@
+{% if type == 'block' %}
+  {% assign custom_html = block.settings.custom_html %}
+{% else %}
+  {% assign custom_html = section.settings.custom_html %}
+{% endif %}
+
+
+
+
+<center>  
+  <div class="hide-on-mobile">  <img  src="{{ 'text-after-main.svg' | asset_url }}" width="100%" alt="{{ shop.name }}"> 
+  </div>
+  <div class="hide-on-desktop">
+      <img src="{{ 'text-after-main-mobile.svg' | asset_url }}" width="95%" alt="{{ shop.name }}"> 
+  </div>
+  </center>
+  <br>
+

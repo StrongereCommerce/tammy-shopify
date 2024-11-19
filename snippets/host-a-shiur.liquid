@@ -1,0 +1,75 @@
+<div  id="host-a-shiur-section">
+  
+  
+  <div class="bg-img">
+    
+  <h3>Host A Shiur</h3>
+    <p class="hide-on-big-mobile stay-left background-host">Tammy’s incredible lectures on dozens of different topics have literally changed
+thousands of lives around the world. From Melbourne to Miami, from Belgium to Brooklyn,
+from Los Angeles to Vienna, Tammy’s shiurim are giving women and girls the
+desperately needed tools to deal with today’s many challenges.
+<br /><br />In areas such as Marriage and Parenting, and most importantly Emuna and Bitachon,
+Tammy shares her personal struggles and golden practical advice with her contagious joy,
+warmth and humor making her adored and beloved by so many.
+<br /><br />Gather together some neighbors, friends or family and host a series of Tammy’s lectures.
+    You will be giving all and yourself a priceless gift you will cherish forever.</p>
+    <p class="hide-on-small-desktop add-padding background-host">Tammy’s incredible lectures on dozens of different topics have literally changed
+thousands of lives around the world. From Melbourne to Miami, from Belgium to Brooklyn,
+from Los Angeles to Vienna, Tammy’s shiurim are giving women and girls the
+desperately needed tools to deal with today’s many challenges.
+<br /><br />In areas such as Marriage and Parenting, and most importantly Emuna and Bitachon,
+Tammy shares her personal struggles and golden practical advice with her contagious joy,
+warmth and humor making her adored and beloved by so many.
+<br /><br />Gather together some neighbors, friends or family and host a series of Tammy’s lectures.
+  You will be giving all and yourself a priceless gift you will cherish forever.</p>
+    <div class="container">
+    <h8>To Host A Shiur, Please Fill Out This Form</h8>
+     {% form 'contact' %}
+      {% if form.posted_successfully? %}
+        <p class="quote">{{ 'contact.form.post_success' | t }}</p>
+      {% endif %}
+
+      {% if form.errors %}
+        <p class="quote">{{ 'general.forms.post_error' | t }}</p>
+
+       {% assign message = 'contact.form.message' | t %}
+        <ul class="center">
+          {% for field in form.errors %}
+            {% if field == 'form' %}
+              <li>
+                {{ form.errors.messages[field] }}
+              </li>
+            {% else %}
+              <li>
+                {% assign field_name = field | replace: 'body', message %}
+                {{ 'general.forms.post_field_error_html' | t: field: field_name, error: form.errors.messages[field] }}
+              </li>
+            {% endif %}
+          {% endfor %}
+         </ul>
+      {% endif %}
+
+       <br class="clear" />
+       <div class="eight columns alpha">
+        {% assign name_attr = 'contact.form.name' | handle %}
+        <label for="contactFormName">{{ 'contact.form.name' | t }} <span class="red">*</span></label>
+        <input type="text" id="contactFormName" name="contact[{{ name_attr }}]" placeholder="{{ 'contact.form.name' | t }}" autocapitalize="words" value="{% if form[name_attr] %}{{ form[name_attr] }}{% elsif customer %}{{ customer.name }}{% endif %}" required="required">
+       </div>
+       <div class="eight columns omega">
+        <label for="contactFormEmail">{{ 'contact.form.email' | t }} <span class="red">*</span></label>
+        <input type="email" id="contactFormEmail" name="contact[email]" placeholder="{{ 'contact.form.email' | t }}" autocorrect="off" autocapitalize="off" value="{% if form.email %}{{ form.email }}{% elsif customer %}{{ customer.email }}{% endif %}" required="required">
+       </div>
+       
+        {% assign name_attr = 'contact.form.phone' | t | handle %}
+        <label for="contactFormPhone">{{ 'contact.form.phone' | t }}<span class="red">*</span></label>
+        <input type="tel" id="contactFormPhone" name="contact[{{ name_attr }}]" placeholder="{{ 'contact.form.phone' | t }}" pattern="[0-9\-]*" value="{% if form[name_attr] %}{{ form[name_attr] }}{% elsif customer %}{{ customer.phone }}{% endif %}">
+       
+
+      <label for="contactFormLocation">{{ 'contact.form.location' | t }} <span class="red">*</span></label>
+        <input type="address" id="contactFormLocation" name="contact[location]" placeholder="{{ 'contact.form.location' | t }}" autocorrect="off" autocapitalize="off" value="{% if form.address %}{{ form.address }}{% elsif customer %}{{ customer.address }}{% endif %}" required="required">
+
+      <input type="submit" class="submit action_button" value="{{ 'contact.form.send' | t }}" />
+    {% endform %}
+  </div>
+</div>
+</div>

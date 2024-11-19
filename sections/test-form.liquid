@@ -1,0 +1,27 @@
+{% comment %}
+** Custom HTML - homepage partial **
+- Draggable section
+{% endcomment %}
+
+{% include 'host-a-shiur-form' %}
+
+{% schema %}
+{
+  "name": "SVG 1",
+  "class": "custom-html-section",
+  "settings": [
+    {
+      "type": "textarea",
+      "id": "custom_html",
+      "label": "Custom html"
+    }
+  ],
+  "presets": [{
+    "name": "SVG 1",
+    "category": "Content",
+    "settings": {
+    }
+  }]
+}
+
+{% endschema %}

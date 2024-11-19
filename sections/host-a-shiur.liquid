@@ -1,0 +1,27 @@
+{% comment %}
+** Custom HTML - homepage partial **
+- Draggable section
+{% endcomment %}
+
+{% include 'host-a-shiur' %}
+
+{% schema %}
+{
+  "name": "Host A Shiur",
+  "class": "custom-html-section",
+  "settings": [
+    {
+      "type": "textarea",
+      "id": "custom_html",
+      "label": "Custom html"
+    }
+  ],
+  "presets": [{
+    "name": "Host A Shiur",
+    "category": "Content",
+    "settings": {
+    }
+  }]
+}
+
+{% endschema %}
